@@ -145,7 +145,7 @@ INSERT INTO UnitAmenity (UnitID, AmenityID, Name, is_included) VALUES
 (6, 10, 'Extra Storage', 1),
 (7, 5, 'Jacuzzi Tub', 1),
 (8, 4, 'Kitchen Island', 1),
-(9, 8, 'Ceiling Fans', 1);
+(9, 8, 'Balcony', 1);
 
 -- Insert Leases
 INSERT INTO Lease (TenantID, UnitID, start_date, end_date, monthly_rent, deposit) VALUES
