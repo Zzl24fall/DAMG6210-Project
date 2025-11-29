@@ -1,7 +1,20 @@
--- Property Management Database Implementation
--- DDL SCRIPT
+-- 切换到系统库 master，因为不能删除当前正在使用的数据库
+USE master;
+GO
 
--- Create Database
+-- 检查数据库是否存在
+IF EXISTS (SELECT name FROM sys.databases WHERE name = N'PropertyManagementDB')
+BEGIN
+    -- 如果存在，为了防止 "Database is in use" 报错，
+    -- 将数据库设置为单用户模式，并立即回滚所有未完成的事务（强制踢出其他连接）
+    ALTER DATABASE [PropertyManagementDB] SET SINGLE_USER WITH ROLLBACK IMMEDIATE;
+    
+    -- 删除数据库
+    DROP DATABASE [PropertyManagementDB];
+END
+GO
+
+-- 创建数据库
 CREATE DATABASE PropertyManagementDB;
 GO
 
